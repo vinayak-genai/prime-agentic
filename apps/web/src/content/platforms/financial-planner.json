@@ -1,0 +1,80 @@
+{
+  "slug": "financial-planner",
+  "hero": {
+    "outcome": "Personalized financial planning, continuously updated.",
+    "description": "Coordinated agents that keep client plans current as goals, markets, and regulations change."
+  },
+  "problem": {
+    "title": "Plans that go stale",
+    "description": "Financial plans are often built once and left static. Goals change, markets move, and advisors spend hours re-gathering data before every review."
+  },
+  "outcome": {
+    "title": "A plan that keeps up",
+    "description": "Prime Agentic continuously reconciles a client's goals and holdings, surfacing the changes that matter so advisors focus on the conversation, not the paperwork."
+  },
+  "features": [
+    {
+      "title": "Continuous reconciliation",
+      "description": "Agents reconcile holdings against goals and flag drift."
+    },
+    {
+      "title": "Scenario modeling",
+      "description": "Model life events and market changes against a plan."
+    },
+    {
+      "title": "Review preparation",
+      "description": "Summarize changes and surface next-best actions before each review."
+    },
+    {
+      "title": "Goal tracking",
+      "description": "Track progress toward retirement, education, and other goals."
+    }
+  ],
+  "steps": [
+    {
+      "title": "Plan",
+      "description": "Agents gather goals, holdings, and constraints into a living plan."
+    },
+    {
+      "title": "Execute",
+      "description": "Agents reconcile data, run scenarios, and prepare review materials."
+    },
+    {
+      "title": "Adapt",
+      "description": "As goals or markets change, agents update the plan and flag what needs attention."
+    }
+  ],
+  "useCases": [
+    {
+      "title": "Independent advisors",
+      "description": "Spend less time on data gathering and more on client conversations."
+    },
+    {
+      "title": "Wealth management firms",
+      "description": "Keep a growing book of client plans current across reviewers."
+    },
+    {
+      "title": "Retirement planning",
+      "description": "Track progress toward retirement goals and flag shortfalls early."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "When will this be available?",
+      "answer": "[PLACEHOLDER] The platform is in development; availability timing will be announced."
+    },
+    {
+      "question": "Is there an early access program?",
+      "answer": "[PLACEHOLDER] Early access details are still being defined."
+    },
+    {
+      "question": "What does this demo show?",
+      "answer": "The demo is an illustrative walkthrough of the coordination approach, using a fictional persona and mock data."
+    },
+    {
+      "question": "Is this a live product?",
+      "answer": "[PLACEHOLDER] No — the platform is in development and not yet available."
+    }
+  ],
+  "disclaimer": "Illustrative demo only. Not financial advice. Consult a licensed advisor."
+}

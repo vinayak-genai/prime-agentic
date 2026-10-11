@@ -1,0 +1,25 @@
+{
+  "slug": "financial-planner",
+  "persona": {
+    "name": "Alex Morgan",
+    "detail": "Illustrative persona, 41, planning for retirement"
+  },
+  "steps": [
+    {
+      "title": "Upload portfolio",
+      "description": "Alex shares their goals and current holdings. All figures are illustrative."
+    },
+    {
+      "title": "Scenario review",
+      "description": "Agents reconcile the holdings against goals and highlight drift. Illustrative numbers only."
+    },
+    {
+      "title": "Plan adjustments",
+      "description": "Agents propose adjustments and model the impact. No return projections."
+    },
+    {
+      "title": "Plan summary",
+      "description": "A review-ready summary surfaces next-best actions for the advisor."
+    }
+  ]
+}

@@ -8,8 +8,8 @@ const VIEWPORTS = [
 
 const THEMES = ['light', 'dark'] as const;
 
-const FREEZE_ANIMATIONS =
-  '*, *::before, *::after { animation: none !important; transition: none !important; }';
+const HIDE_DEV_TOOLS =
+  '[data-nextjs-dev-tools-button], [data-nextjs-dev-tools-overlay] { display: none !important; }';
 
 for (const viewport of VIEWPORTS) {
   for (const theme of THEMES) {
@@ -18,18 +18,17 @@ for (const viewport of VIEWPORTS) {
         width: viewport.width,
         height: viewport.height,
       });
-      await page.emulateMedia({ colorScheme: theme });
+      // Reduced motion disables the hero autoplay and AgentFlow pulse so the
+      // screenshot is deterministic.
+      await page.emulateMedia({ colorScheme: theme, reducedMotion: 'reduce' });
       await page.goto('/');
-      // Freeze the AgentFlow animation so snapshots are deterministic.
-      await page.addStyleTag({ content: FREEZE_ANIMATIONS });
-      // Pause the hero autoplay so the slide doesn't advance mid-screenshot.
-      const autoplay = page.getByRole('button', { name: 'Autoplay' });
-      if (await autoplay.count()) {
-        await autoplay.click();
-      }
+      await expect(page.locator('html')).toHaveAttribute('data-theme', theme);
+      await page.addStyleTag({ content: HIDE_DEV_TOOLS });
       await expect(page).toHaveScreenshot(
         `home-${viewport.name}-${theme}.png`,
-        { fullPage: true },
+        {
+          fullPage: true,
+        },
       );
     });
   }
