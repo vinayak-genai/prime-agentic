@@ -20,6 +20,19 @@ test('next button advances the carousel', async ({ page }) => {
   ).toHaveAttribute('aria-current', 'true');
 });
 
+test('autoplay carousel exposes a working pause/play control', async ({
+  page,
+}) => {
+  await page.goto('/carousel');
+  const region = page.getByRole('region', { name: 'Hero example' });
+  const toggle = region.getByRole('button', { name: 'Autoplay' });
+  await expect(toggle).toHaveAttribute('aria-pressed', 'true');
+  await toggle.click();
+  await expect(toggle).toHaveAttribute('aria-pressed', 'false');
+  await toggle.click();
+  await expect(toggle).toHaveAttribute('aria-pressed', 'true');
+});
+
 test('carousel page has no axe violations', async ({ page }) => {
   await page.goto('/carousel');
   const results = await new AxeBuilder({ page }).analyze();

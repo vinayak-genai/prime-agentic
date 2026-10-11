@@ -1,0 +1,10 @@
+import { ComingSoon } from '@/components/coming-soon';
+
+export default function AboutPage() {
+  return (
+    <ComingSoon
+      title="About"
+      description="The Prime Agentic story is coming soon."
+    />
+  );
+}

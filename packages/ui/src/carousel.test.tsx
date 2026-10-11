@@ -42,4 +42,19 @@ describe('Carousel', () => {
     const { container } = render(<Carousel items={[]} />);
     expect(container).toBeEmptyDOMElement();
   });
+
+  it('renders a pause control when autoplay is enabled', () => {
+    render(<Carousel items={items} autoplay />);
+    expect(screen.getByRole('button', { name: 'Autoplay' })).toHaveAttribute(
+      'aria-pressed',
+      'true',
+    );
+  });
+
+  it('does not render a pause control when autoplay is disabled', () => {
+    render(<Carousel items={items} />);
+    expect(
+      screen.queryByRole('button', { name: 'Autoplay' }),
+    ).not.toBeInTheDocument();
+  });
 });

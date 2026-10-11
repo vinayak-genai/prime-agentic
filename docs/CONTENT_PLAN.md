@@ -16,15 +16,15 @@ Copy outline, CTAs, and SEO keywords per page. All unfinished copy is
 
 ## 2. Home (`/`)
 
-| Section             | Copy outline                                                                                                                                                                 | CTA                       |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
-| Hero (slide 1)      | "Four agentic platforms. One coordinated approach." + sub: "Prime Agentic builds AI that plans, executes, and adapts — across finance, recruiting, education, and industry." | Request a demo            |
-| Hero (slide 2)      | Platform montage: one line per platform                                                                                                                                      | Explore platforms         |
-| Hero (slide 3)      | "Agents that coordinate, not just chat."                                                                                                                                     | See the approach          |
-| Platform showcase   | Four cards with status badges                                                                                                                                                | Per-platform "Learn more" |
-| Agentic AI approach | "Claude, Codex, and OpenClaw — specialized agents coordinating toward one goal." + 3 value pillars: _Plan_, _Execute_, _Adapt_                                               | See the approach          |
-| Use cases           | [PLACEHOLDER] outcome quotes                                                                                                                                                 | Request a demo            |
-| CTA band            | "See how coordinated agents work for your industry."                                                                                                                         | Request a demo            |
+| Section                | Copy outline                                                                                                                                                                 | CTA                       |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
+| Hero (slide 1)         | "Four agentic platforms. One coordinated approach." + sub: "Prime Agentic builds AI that plans, executes, and adapts — across finance, recruiting, education, and industry." | Request a demo            |
+| Hero (slide 2)         | Platform montage: one line per platform                                                                                                                                      | Explore platforms         |
+| Hero (slide 3)         | "Agents that coordinate, not just chat."                                                                                                                                     | See the approach          |
+| Platform showcase      | Four cards with status badges                                                                                                                                                | Per-platform "Learn more" |
+| Agentic AI approach    | "Specialized agents coordinating toward one goal." + 3 value pillars: _Plan_, _Execute_, _Adapt_ (generic agent roles; product names TBD)                                    | See the approach          |
+| Illustrative scenarios | [PLACEHOLDER] illustrative scenarios (clearly marked, not testimonials)                                                                                                      | Request a demo            |
+| CTA band               | "See how coordinated agents work for your industry."                                                                                                                         | Request a demo            |
 
 **SEO:** _agentic AI platform, GenAI SaaS, AI agents for business, coordinated AI agents_
 

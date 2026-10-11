@@ -1,5 +1,6 @@
 /* Design tokens — single source of truth (docs/SITEMAP_UIUX.md §2).
-   Light mode only. Import after `@import "tailwindcss"`. */
+   Light is the default; dark is a minimal mirror of the same tokens.
+   Import after `@import "tailwindcss"`. */
 
 @theme {
   /* Color */
@@ -12,6 +13,7 @@
   --color-accent: #4f46e5;
   --color-accent-hover: #4338ca;
   --color-accent-soft: #eef2ff;
+  --color-accent-foreground: #ffffff;
   --color-success: #16a34a;
   --color-warning: #b45309;
   --color-warning-soft: #fef3c7;
@@ -28,4 +30,44 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1440px;
+}
+
+/* Dark theme — manual override via data-theme on <html>. */
+:root[data-theme='dark'] {
+  --color-bg: #0f172a;
+  --color-bg-subtle: #1e293b;
+  --color-surface: #1e293b;
+  --color-border: #334155;
+  --color-ink: #f1f5f9;
+  --color-muted: #94a3b8;
+  --color-accent: #818cf8;
+  --color-accent-hover: #a5b4fc;
+  --color-accent-soft: #312e81;
+  --color-accent-foreground: #0f172a;
+  --color-success: #4ade80;
+  --color-warning: #fbbf24;
+  --color-warning-soft: #78350f;
+  --color-info: #38bdf8;
+  --color-info-soft: #082f49;
+}
+
+/* Dark theme — automatic when the OS prefers dark and no manual choice. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --color-bg: #0f172a;
+    --color-bg-subtle: #1e293b;
+    --color-surface: #1e293b;
+    --color-border: #334155;
+    --color-ink: #f1f5f9;
+    --color-muted: #94a3b8;
+    --color-accent: #818cf8;
+    --color-accent-hover: #a5b4fc;
+    --color-accent-soft: #312e81;
+    --color-accent-foreground: #0f172a;
+    --color-success: #4ade80;
+    --color-warning: #fbbf24;
+    --color-warning-soft: #78350f;
+    --color-info: #38bdf8;
+    --color-info-soft: #082f49;
+  }
 }

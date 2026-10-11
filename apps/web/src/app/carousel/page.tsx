@@ -11,7 +11,7 @@ const slides = ['One', 'Two', 'Three', 'Four', 'Five'].map((text) => (
 
 export default function CarouselPage() {
   return (
-    <main className="mx-auto flex max-w-4xl flex-col gap-12 px-4 py-12">
+    <div className="mx-auto flex max-w-4xl flex-col gap-12 px-4 py-12">
       <h1 className="text-4xl font-semibold">Carousel</h1>
 
       <section>
@@ -46,6 +46,6 @@ export default function CarouselPage() {
         <h2 className="mb-4 text-xl font-semibold">Story</h2>
         <Carousel items={slides} variant="story" ariaLabel="Story example" />
       </section>
-    </main>
+    </div>
   );
 }

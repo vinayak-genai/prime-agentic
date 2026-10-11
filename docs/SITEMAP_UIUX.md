@@ -3,9 +3,10 @@
 Companion to `PRD.md`. Defines information architecture, page wireframes (in
 text), design tokens, the component inventory, carousel specs, and motion rules.
 
-> **Theme decision (from kickoff):** clean **light mode** is the default and
-> only theme for now. No dark mode is in scope. (This overrides the generic
-> "dark/light" note in `CLAUDE.md` for this project.)
+> **Theme decision (from kickoff):** clean **light mode** is the default. A
+> **dark theme** is a minimal mirror of the same tokens — auto via
+> `prefers-color-scheme`, plus a manual toggle (`data-theme` on `<html>`) —
+> see §2.1.
 
 ---
 
@@ -45,25 +46,32 @@ extensions in `apps/web`.
 
 ### 2.1 Color
 
-| Token            | Value                  | Usage                         |
-| ---------------- | ---------------------- | ----------------------------- |
-| `--bg`           | `#FFFFFF`              | Page background               |
-| `--bg-subtle`    | `#F8FAFC` (slate-50)   | Alternating sections, cards   |
-| `--surface`      | `#FFFFFF`              | Cards, modals                 |
-| `--border`       | `#E2E8F0` (slate-200)  | Hairlines, dividers           |
-| `--text`         | `#0F172A` (slate-900)  | Primary text                  |
-| `--text-muted`   | `#475569` (slate-600)  | Secondary text                |
-| `--accent`       | `#4F46E5` (indigo-600) | Links, primary buttons, focus |
-| `--accent-hover` | `#4338CA` (indigo-700) | Hover states                  |
-| `--accent-soft`  | `#EEF2FF` (indigo-50)  | Accent tints, tags            |
-| `--success`      | `#16A34A`              | Positive indicators           |
-| `--warning`      | `#B45309`              | "In Development" badge text   |
-| `--warning-soft` | `#FEF3C7`              | "In Development" badge bg     |
-| `--info`         | `#0369A1`              | "Early Access" badge text     |
-| `--info-soft`    | `#E0F2FE`              | "Early Access" badge bg       |
+| Token                 | Value                  | Usage                                      |
+| --------------------- | ---------------------- | ------------------------------------------ |
+| `--bg`                | `#FFFFFF`              | Page background                            |
+| `--bg-subtle`         | `#F8FAFC` (slate-50)   | Alternating sections, cards                |
+| `--surface`           | `#FFFFFF`              | Cards, modals                              |
+| `--border`            | `#E2E8F0` (slate-200)  | Hairlines, dividers                        |
+| `--text`              | `#0F172A` (slate-900)  | Primary text                               |
+| `--text-muted`        | `#475569` (slate-600)  | Secondary text                             |
+| `--accent`            | `#4F46E5` (indigo-600) | Links, primary buttons, focus              |
+| `--accent-hover`      | `#4338CA` (indigo-700) | Hover states                               |
+| `--accent-soft`       | `#EEF2FF` (indigo-50)  | Accent tints, tags                         |
+| `--accent-foreground` | `#FFFFFF`              | Text on `--accent` fills (primary buttons) |
+| `--success`           | `#16A34A`              | Positive indicators                        |
+| `--warning`           | `#B45309`              | "In Development" badge text                |
+| `--warning-soft`      | `#FEF3C7`              | "In Development" badge bg                  |
+| `--info`              | `#0369A1`              | "Early Access" badge text                  |
+| `--info-soft`         | `#E0F2FE`              | "Early Access" badge bg                    |
 
 **Contrast:** all text/background pairs meet WCAG 2.2 AA (≥ 4.5:1). `--accent`
 on white is ~6.3:1; use `--accent-soft` (not white) behind accent text.
+
+**Dark mode (minimal mirror):** the same tokens are re-defined under
+`:root[data-theme="dark"]` and `@media (prefers-color-scheme: dark)` —
+dark surfaces (`slate-900/800`), light text (`slate-100`), accent lightened to
+`indigo-400` for dark-surface contrast, and `--accent-foreground` flips to a
+dark value so primary-button text still contrasts. No new semantic tokens.
 
 ### 2.2 Typography
 
@@ -154,7 +162,7 @@ Backed by **Embla Carousel**. One component, four visual variants.
 - **hero** — full-bleed large slides, overlay text, 1-up.
 - **cards** — responsive peek (1 / 2 / 3 visible), platform showcase.
 - **logos** — auto-scrolling logo strip, continuous marquee feel.
-- **story** — testimonial/use-case, single large quote with controls.
+- **story** — illustrative scenario, single large description with controls.
 
 **Accessibility (required):**
 
@@ -197,9 +205,10 @@ Backed by **Embla Carousel**. One component, four visual variants.
    platform montage, agentic-approach teaser. Each: H1, subtitle, 1–2 CTAs.
 3. **Platform showcase** (`variant="cards"`) — four `PlatformCard`s with
    `StatusBadge` ("In Development").
-4. **Agentic AI approach** — `AgentFlow` diagram + 3 short value pillars.
-5. **Use-case carousel** (`variant="story"`) — outcome-focused [PLACEHOLDER]
-   quotes.
+4. **Agentic AI approach** — `AgentFlow` diagram (generic agent roles:
+   Plan / Execute / Adapt — product names TBD) + 3 short value pillars.
+5. **Illustrative scenarios** (`variant="story"`) — clearly-marked illustrative
+   scenarios, not testimonials, with a visible "Illustrative example" label.
 6. **CTA band** — "See how coordinated agents work for your industry."
 7. **Footer** — nav, newsletter, legal, disclaimer.
 

@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import Autoplay from 'embla-carousel-autoplay';
+import Autoplay, { type AutoplayType } from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
 import { usePrefersReducedMotion } from './use-prefers-reduced-motion';
 
@@ -49,6 +49,33 @@ function Chevron({ direction }: { direction: 'prev' | 'next' }) {
   );
 }
 
+function PauseIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className="h-5 w-5"
+      aria-hidden="true"
+    >
+      <rect x="6" y="5" width="4" height="14" rx="1" />
+      <rect x="14" y="5" width="4" height="14" rx="1" />
+    </svg>
+  );
+}
+
+function PlayIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className="h-5 w-5"
+      aria-hidden="true"
+    >
+      <path d="M8 5v14l11-7z" />
+    </svg>
+  );
+}
+
 export function Carousel({
   items,
   autoplay = false,
@@ -62,6 +89,8 @@ export function Carousel({
 }: CarouselProps) {
   const reducedMotion = usePrefersReducedMotion();
   const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const autoplayEnabled = autoplay && !reducedMotion;
+  const [isPlaying, setIsPlaying] = React.useState(autoplayEnabled);
 
   const options = React.useMemo(
     () => ({
@@ -74,7 +103,7 @@ export function Carousel({
 
   const plugins = React.useMemo(
     () =>
-      autoplay && !reducedMotion
+      autoplayEnabled
         ? [
             Autoplay({
               delay: interval,
@@ -83,7 +112,7 @@ export function Carousel({
             }),
           ]
         : [],
-    [autoplay, reducedMotion, interval],
+    [autoplayEnabled, interval],
   );
 
   const [emblaRef, emblaApi] = useEmblaCarousel(options, plugins);
@@ -94,11 +123,21 @@ export function Carousel({
     onSelect();
     emblaApi.on('select', onSelect);
     emblaApi.on('reInit', onSelect);
+
+    const onAutoplayPlay = () => setIsPlaying(true);
+    const onAutoplayStop = () => setIsPlaying(false);
+    if (autoplayEnabled) {
+      emblaApi.on('autoplay:play', onAutoplayPlay);
+      emblaApi.on('autoplay:stop', onAutoplayStop);
+    }
+
     return () => {
       emblaApi.off('select', onSelect);
       emblaApi.off('reInit', onSelect);
+      emblaApi.off('autoplay:play', onAutoplayPlay);
+      emblaApi.off('autoplay:stop', onAutoplayStop);
     };
-  }, [emblaApi]);
+  }, [emblaApi, autoplayEnabled]);
 
   const scrollPrev = React.useCallback(
     () => emblaApi?.scrollPrev(),
@@ -112,6 +151,17 @@ export function Carousel({
     (index: number) => emblaApi?.scrollTo(index),
     [emblaApi],
   );
+
+  const toggleAutoplay = React.useCallback(() => {
+    if (!emblaApi) return;
+    const plugin = emblaApi.plugins().autoplay as AutoplayType | undefined;
+    if (!plugin) return;
+    if (plugin.isPlaying()) {
+      plugin.stop();
+    } else {
+      plugin.play();
+    }
+  }, [emblaApi]);
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.target !== event.currentTarget) return;
@@ -170,6 +220,18 @@ export function Carousel({
             <Chevron direction="next" />
           </button>
         </>
+      )}
+
+      {autoplayEnabled && (
+        <button
+          type="button"
+          onClick={toggleAutoplay}
+          aria-label="Autoplay"
+          aria-pressed={isPlaying}
+          className="absolute right-2 top-2 z-10 rounded-full bg-white/80 p-2 text-ink shadow-md outline-none focus-visible:ring-2 focus-visible:ring-accent"
+        >
+          {isPlaying ? <PauseIcon /> : <PlayIcon />}
+        </button>
       )}
 
       {showDots && (
