@@ -2,6 +2,8 @@ export { Button } from './button';
 export type { ButtonProps } from './button';
 export { Carousel } from './carousel';
 export type { CarouselProps, CarouselVariant } from './carousel';
+export { DemoViewer } from './demo-viewer';
+export type { DemoViewerProps, DemoStep, DemoViewerDemo } from './demo-viewer';
 export { Hero } from './hero';
 export type { HeroProps, HeroCTA } from './hero';
 export { PlatformCard } from './platform-card';
