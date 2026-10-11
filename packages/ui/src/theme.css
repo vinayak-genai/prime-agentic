@@ -1,0 +1,31 @@
+/* Design tokens — single source of truth (docs/SITEMAP_UIUX.md §2).
+   Light mode only. Import after `@import "tailwindcss"`. */
+
+@theme {
+  /* Color */
+  --color-bg: #ffffff;
+  --color-bg-subtle: #f8fafc;
+  --color-surface: #ffffff;
+  --color-border: #e2e8f0;
+  --color-ink: #0f172a;
+  --color-muted: #475569;
+  --color-accent: #4f46e5;
+  --color-accent-hover: #4338ca;
+  --color-accent-soft: #eef2ff;
+  --color-success: #16a34a;
+  --color-warning: #b45309;
+  --color-warning-soft: #fef3c7;
+  --color-info: #0369a1;
+  --color-info-soft: #e0f2fe;
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  /* Breakpoints (mobile-first) */
+  --breakpoint-sm: 360px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1440px;
+}

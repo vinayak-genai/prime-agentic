@@ -25,6 +25,9 @@ coverage/
 playwright-report/
 test-results/
 
+# storybook build output
+storybook-static/
+
 # turbo
 .turbo/
 

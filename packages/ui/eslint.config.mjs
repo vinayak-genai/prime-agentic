@@ -3,7 +3,14 @@ import eslintConfigPrettier from 'eslint-config-prettier';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
-  { ignores: ['dist/**', 'node_modules/**', 'coverage/**'] },
+  {
+    ignores: [
+      'dist/**',
+      'node_modules/**',
+      'coverage/**',
+      'storybook-static/**',
+    ],
+  },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   eslintConfigPrettier,

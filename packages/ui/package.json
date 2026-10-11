@@ -4,12 +4,15 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./theme.css": "./src/theme.css"
   },
   "scripts": {
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "peerDependencies": {
     "react": "^19.0.0",
@@ -17,15 +20,29 @@
   },
   "devDependencies": {
     "@eslint/js": "^9",
+    "@storybook/addon-essentials": "^8.6.14",
+    "@storybook/react": "8.6.14",
+    "@storybook/react-vite": "^8.6.14",
+    "@tailwindcss/vite": "^4.3.3",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.7",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@vitejs/plugin-react": "^4",
     "eslint": "^9",
     "eslint-config-prettier": "^9",
+    "jsdom": "^30.1.2",
     "react": "^19",
     "react-dom": "^19",
+    "storybook": "^8.6.14",
     "typescript": "^5",
     "typescript-eslint": "^8",
+    "vite": "^6",
     "vitest": "^4"
+  },
+  "dependencies": {
+    "embla-carousel-autoplay": "^8.6.0",
+    "embla-carousel-react": "^8.6.0"
   }
 }
