@@ -39,7 +39,7 @@ Shared structure per platform; fields filled per vertical.
 | Hero              | Name + status badge + one-line outcome                                  |
 | Problem / outcome | "Today: [PLACEHOLDER pain]. With Prime Agentic: [PLACEHOLDER outcome]." |
 | Features          | 3–6 feature bullets                                                     |
-| How it works      | 3-step agent flow (Plan → Execute → Adapt)                              |
+| How it works      | Simple numbered steps from config (Plan → Execute → Adapt)              |
 | Demo              | Interactive mock (labeled "mock demo")                                  |
 | Use cases         | Bullet grid of industry scenarios [PLACEHOLDER]                         |
 | FAQ               | 4–6 questions                                                           |
@@ -49,8 +49,9 @@ Shared structure per platform; fields filled per vertical.
 
 - **Hero outcome:** "Personalized financial planning, continuously updated."
 - **SEO:** _AI financial planner, wealth management AI, financial advisor software_
-- **Disclaimer (required):** "Prime Agentic is not financial advice. Consult a
-  licensed advisor." — shown in hero and footer.
+- **Disclaimer (required):** "Illustrative demo only. Not financial advice.
+  Consult a licensed advisor." — shown in the hero, beside the demo, and in the
+  footer.
 
 ### 3.2 Recruitment ATS
 

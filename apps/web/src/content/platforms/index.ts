@@ -1,11 +1,23 @@
+import { cache } from 'react';
 import { platformContentSchema, type PlatformContent } from './schema';
-import financialPlanner from './financial-planner.json';
 
 /**
- * Build-time-validated platform copy, keyed by slug. A registry slug without an
- * entry here renders the "coming soon" page. Add a platform by importing its
- * JSON and parsing it with `platformContentSchema`.
+ * Lazy, per-slug content loaders so a platform route only bundles its own
+ * JSON (scaling concern, not a Lighthouse one). A registry slug absent here
+ * renders the "coming soon" page. Adding a platform means adding one entry;
+ * the JSON is zod-validated when first loaded, so a malformed file fails the
+ * build during SSG.
  */
-export const PLATFORM_CONTENT: Record<string, PlatformContent | undefined> = {
-  'financial-planner': platformContentSchema.parse(financialPlanner),
-};
+export const PLATFORM_CONTENT_LOADERS = [
+  ['financial-planner', () => import('./financial-planner.json')],
+] as const;
+
+export const getPlatformContent = cache(
+  async (slug: string): Promise<PlatformContent | undefined> => {
+    const entry = PLATFORM_CONTENT_LOADERS.find(([key]) => key === slug);
+    if (!entry) return undefined;
+    const [, load] = entry;
+    const mod = await load();
+    return platformContentSchema.parse(mod.default);
+  },
+);

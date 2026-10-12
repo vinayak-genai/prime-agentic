@@ -23,15 +23,15 @@ Legend — Type: `ui` (packages/ui) · `web` (apps/web component) · `page`
 
 ## 2. App Components (`apps/web`)
 
-| Module           | Type | Props                                                 | Dependencies                            |
-| ---------------- | ---- | ----------------------------------------------------- | --------------------------------------- |
-| `Header`         | web  | `nav: NavItem[]`, `cta: {label, href}`                | `Button`, mobile-menu state             |
-| `Footer`         | web  | `nav`, `social: SocialLink[]`, `newsletter`           | `NewsletterForm`                        |
-| `AgentFlow`      | web  | `agents: Agent[]`, `goal: string`, `animate: boolean` | Framer Motion, `useReducedMotion`       |
-| `LeadForm`       | web  | `type: "contact" \| "demo"`, `platforms: Platform[]`  | api `createDemoRequest`, `zod` schema   |
-| `NewsletterForm` | web  | `—`                                                   | api `subscribeNewsletter`, `zod` schema |
-| `FAQ`            | web  | `items: {question, answer}[]`                         | native `<details>/<summary>`            |
-| `CTABand`        | web  | `title`, `description`, `ctas`                        | `Button`                                |
+| Module           | Type | Props                                                              | Dependencies                            |
+| ---------------- | ---- | ------------------------------------------------------------------ | --------------------------------------- |
+| `Header`         | web  | `nav: NavItem[]`, `cta: {label, href}`                             | `Button`, mobile-menu state             |
+| `Footer`         | web  | `nav`, `social: SocialLink[]`, `newsletter`, `disclaimer?: string` | `NewsletterForm`                        |
+| `AgentFlow`      | web  | `agents: Agent[]`, `goal: string`, `animate: boolean`              | Framer Motion, `useReducedMotion`       |
+| `LeadForm`       | web  | `type: "contact" \| "demo"`, `platforms: Platform[]`               | api `createDemoRequest`, `zod` schema   |
+| `NewsletterForm` | web  | `—`                                                                | api `subscribeNewsletter`, `zod` schema |
+| `FAQ`            | web  | `items: {question, answer}[]`                                      | native `<details>/<summary>`            |
+| `CTABand`        | web  | `title`, `description`, `ctas`                                     | `Button`                                |
 
 ## 3. Pages (`apps/web`)
 
@@ -53,7 +53,10 @@ Legend — Type: `ui` (packages/ui) · `web` (apps/web component) · `page`
 | File                            | Shape                                                                                                     |
 | ------------------------------- | --------------------------------------------------------------------------------------------------------- |
 | `content/platforms.ts`          | `Platform[]` — registry: `{slug, name, tagline, status, icon, summary}`                                   |
+| `content/platforms/index.ts`    | `PLATFORM_CONTENT_LOADERS` + `getPlatformContent(slug)` — per-slug lazy, zod-validated loaders            |
 | `content/platforms/<slug>.json` | `PlatformContent` — hero, problem/outcome, `features[]`, `steps[]`, `useCases[]`, `faqs[]`, `disclaimer?` |
+| `content/disclaimer.ts`         | `FINANCIAL_DISCLAIMER` — canonical disclaimer string (guarded against the JSON copy by a test)            |
+| `mocks/index.ts`                | `PLATFORM_DEMO_LOADERS` + `getPlatformDemo(slug)` — per-slug lazy, zod-validated loaders                  |
 | `mocks/<slug>.demo.json`        | `PlatformDemo` — `{slug, persona, steps[]}` (illustrative mock)                                           |
 | `content/home.ts`               | Home copy — hero slides, sections, illustrative scenarios                                                 |
 
@@ -67,3 +70,6 @@ Legend — Type: `ui` (packages/ui) · `web` (apps/web component) · `page`
 - `apps/api` depends on nothing in `apps/web`.
 - All mock-driven components (`DemoViewer`, `PlatformPage`) take data as props —
   never fetch real platform data.
+- Content and demo JSON are loaded **per slug** via lazy loaders so each
+  platform route bundles only its own JSON; a registry slug with no content
+  loader renders the "coming soon" page.

@@ -35,7 +35,8 @@ text), design tokens, the component inventory, carousel specs, and motion rules.
 Blog · Contact · [Primary CTA: "Request a demo"].
 
 **Footer:** logo · nav links · legal links · newsletter signup · social
-placeholders · "Not financial advice" one-liner.
+placeholders · "Not financial advice" one-liner (replaced by the full
+disclaimer on pages that set one via a `disclaimer` prop).
 
 ---
 
@@ -123,7 +124,7 @@ dark value so primary-button text still contrasts. No new semantic tokens.
 | Component         | Location    | Props / key behavior                                   |
 | ----------------- | ----------- | ------------------------------------------------------ |
 | `Header`          | apps/web    | Nav links, Platforms dropdown, mobile menu, CTA        |
-| `Footer`          | apps/web    | Links, newsletter, legal, disclaimer                   |
+| `Footer`          | apps/web    | Links, newsletter, legal, disclaimer (`disclaimer?`)   |
 | `Hero`            | packages/ui | Title, subtitle, CTAs, media slot                      |
 | `Carousel`        | packages/ui | See §4                                                 |
 | `PlatformCard`    | packages/ui | `name`, `tagline`, `status`, `href`, icon/illustration |
@@ -218,13 +219,14 @@ Backed by **Embla Carousel**. One component, four visual variants.
 2. **Hero** — title, `StatusBadge`, one-line outcome, CTA.
 3. **Problem / outcome** — two-column.
 4. **Feature carousel** (`variant="cards"`).
-5. **How it works** — `AgentFlow`-style step sequence (platform-specific).
+5. **How it works** — simple numbered steps from config (not `AgentFlow`).
 6. **Interactive demo** — `DemoViewer` fed by `apps/web/mocks/<slug>.json`.
 7. **Use cases** — bullet grid.
 8. **FAQ** — accordion.
 9. **CTA band** — "Request a demo".
-10. **Footer** (shared). Financial page additionally shows the
-    "not financial advice" disclaimer in the hero and footer.
+10. **Footer** (shared). Financial page additionally shows the full
+    disclaimer in the hero, beside the demo, and in the footer (via a
+    `disclaimer` prop on `Footer`).
 
 ### 6.3 Agentic AI approach (`/agentic-ai`)
 

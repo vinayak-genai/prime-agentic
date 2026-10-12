@@ -5,8 +5,8 @@ import { ComingSoon } from '@/components/coming-soon';
 import { CTABand } from '@/components/cta-band';
 import { FAQ } from '@/components/faq';
 import { PLATFORMS } from '@/content/platforms';
-import { PLATFORM_CONTENT } from '@/content/platforms/index';
-import { PLATFORM_DEMOS } from '@/mocks';
+import { getPlatformContent } from '@/content/platforms/index';
+import { getPlatformDemo } from '@/mocks';
 
 const DemoViewer = dynamic(
   () => import('@prime-agentic/ui').then((m) => m.DemoViewer),
@@ -36,10 +36,13 @@ export async function generateMetadata({
 }) {
   const { slug } = await params;
   const platform = PLATFORMS.find((p) => p.slug === slug);
-  const content = platform ? PLATFORM_CONTENT[platform.slug] : undefined;
+  const content = platform
+    ? await getPlatformContent(platform.slug)
+    : undefined;
   return {
     title: platform ? `${platform.name} — Prime Agentic` : 'Prime Agentic',
     description: content?.hero.outcome ?? platform?.tagline,
+    robots: platform && !content ? { index: false, follow: true } : undefined,
   };
 }
 
@@ -52,11 +55,11 @@ export default async function PlatformPage({
   const platform = PLATFORMS.find((p) => p.slug === slug);
   if (!platform) notFound();
 
-  const content = PLATFORM_CONTENT[platform.slug];
+  const content = await getPlatformContent(platform.slug);
   if (!content) {
     return <ComingSoon title={platform.name} description={platform.tagline} />;
   }
-  const demo = PLATFORM_DEMOS[platform.slug];
+  const demo = await getPlatformDemo(platform.slug);
 
   const featureItems = content.features.map((feature) => (
     <div

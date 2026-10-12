@@ -1,10 +1,20 @@
+import { cache } from 'react';
 import { demoSchema, type PlatformDemo } from './schema';
-import financialPlannerDemo from './financial-planner.demo.json';
 
 /**
- * Build-time-validated demo data, keyed by slug. Add a platform by importing
- * its JSON and parsing it with `demoSchema`.
+ * Lazy, per-slug demo loaders mirroring the content loaders. A platform may
+ * have content but no demo yet; the page renders a "Demo coming soon." stub.
  */
-export const PLATFORM_DEMOS: Record<string, PlatformDemo | undefined> = {
-  'financial-planner': demoSchema.parse(financialPlannerDemo),
-};
+export const PLATFORM_DEMO_LOADERS = [
+  ['financial-planner', () => import('./financial-planner.demo.json')],
+] as const;
+
+export const getPlatformDemo = cache(
+  async (slug: string): Promise<PlatformDemo | undefined> => {
+    const entry = PLATFORM_DEMO_LOADERS.find(([key]) => key === slug);
+    if (!entry) return undefined;
+    const [, load] = entry;
+    const mod = await load();
+    return demoSchema.parse(mod.default);
+  },
+);
