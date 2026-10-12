@@ -15,7 +15,7 @@ const LEGAL_LINKS = [
   { label: 'Disclaimer', href: '/legal/disclaimer' },
 ];
 
-export function Footer() {
+export function Footer({ disclaimer }: { disclaimer?: string }) {
   return (
     <footer className="border-t border-border bg-bg-subtle">
       <div className="mx-auto max-w-6xl px-4 py-12 md:px-6">
@@ -94,7 +94,7 @@ export function Footer() {
               </li>
             ))}
           </ul>
-          <p>Not financial advice.</p>
+          <p>{disclaimer ?? 'Not financial advice.'}</p>
         </div>
       </div>
     </footer>

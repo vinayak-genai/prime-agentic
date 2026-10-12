@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
 import { PLATFORMS } from '@/content/platforms';
 import './globals.css';
@@ -36,10 +35,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
     >
       <body className="min-h-full flex flex-col">
         <Header platforms={PLATFORMS} />
-        <main id="main-content" className="flex-1">
-          {children}
-        </main>
-        <Footer />
+        {children}
       </body>
     </html>
   );
