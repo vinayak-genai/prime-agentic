@@ -17,4 +17,16 @@ describe('FAQ', () => {
     ).toBeInTheDocument();
     expect(screen.getByText('Is there early access?')).toBeInTheDocument();
   });
+
+  it('renders each item as its own disclosure (multi-open)', () => {
+    const { container } = render(
+      <FAQ
+        items={[
+          { question: 'First question', answer: 'First answer' },
+          { question: 'Second question', answer: 'Second answer' },
+        ]}
+      />,
+    );
+    expect(container.querySelectorAll('details')).toHaveLength(2);
+  });
 });
