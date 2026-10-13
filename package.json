@@ -2,6 +2,11 @@
   "name": "prime-agentic",
   "private": true,
   "packageManager": "pnpm@9.15.4",
+  "pnpm": {
+    "overrides": {
+      "zod": "3.25.76"
+    }
+  },
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",

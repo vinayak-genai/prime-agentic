@@ -12,6 +12,7 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
+    "@prime-agentic/contracts": "workspace:^",
     "@prime-agentic/ui": "workspace:^",
     "next": "16.3.8",
     "react": "19.2.8",

@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { platformSlugSchema } from '@prime-agentic/contracts';
 
 export const platformStatusSchema = z.enum([
   'In Development',
@@ -7,7 +8,7 @@ export const platformStatusSchema = z.enum([
 ]);
 
 export const platformSchema = z.object({
-  slug: z.string(),
+  slug: platformSlugSchema,
   name: z.string(),
   tagline: z.string(),
   status: platformStatusSchema,
@@ -20,9 +21,10 @@ export type PlatformStatus = z.infer<typeof platformStatusSchema>;
 export type Platform = z.infer<typeof platformSchema>;
 
 /**
- * Single source of truth for the four platform verticals. Consumed by the
- * header navigation, the home-page showcase, the footer, and (later) the
- * platform pages. Validated at module load so a malformed entry fails fast.
+ * The four platform verticals. Slugs are single-sourced from
+ * `@prime-agentic/contracts`; name/tagline/status/icon/summary live here.
+ * Consumed by the header, home showcase, footer, and platform pages.
+ * Validated at module load so a malformed entry fails fast.
  */
 export const PLATFORMS: Platform[] = platformSchema.array().parse([
   {
