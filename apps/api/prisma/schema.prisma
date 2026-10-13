@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model DemoRequest {
+  id             String   @id @default(cuid())
+  name           String
+  email          String
+  company        String
+  role           String?
+  platform       String
+  message        String
+  consentVersion String
+  consentAt      DateTime @default(now())
+  emailStatus    String   @default("pending")
+  attempts       Int      @default(0)
+  lastError      String?
+  createdAt      DateTime @default(now())
+  deleteAt       DateTime?
+
+  @@index([email, platform, createdAt])
+  @@index([emailStatus, attempts])
+}
