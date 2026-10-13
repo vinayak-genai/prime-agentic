@@ -19,6 +19,7 @@ model DemoRequest {
   consentAt      DateTime @default(now())
   emailStatus    String   @default("pending")
   attempts       Int      @default(0)
+  nextAttemptAt  DateTime?
   lastError      String?
   createdAt      DateTime @default(now())
   deleteAt       DateTime?

@@ -37,6 +37,7 @@ export class DemoRequestsService {
         platform: input.platform,
         message: input.message,
         consentVersion: CONSENT_VERSION,
+        nextAttemptAt: new Date(),
       },
     });
   }

@@ -45,6 +45,7 @@ describe('assertProductionGuards', () => {
       DATABASE_URL: 'postgres://x',
       TURNSTILE_SECRET_KEY: 'secret',
       EMAIL_PROVIDER: 'smtp',
+      SALES_INBOX_EMAIL: 'sales@example.com',
       CORS_ORIGIN: 'https://prime-agentic.com',
       TRUST_PROXY_HOPS: '1',
     });
