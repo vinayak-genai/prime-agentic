@@ -12,6 +12,13 @@ COPY packages/ui/package.json ./packages/ui/package.json
 RUN pnpm install --frozen-lockfile
 
 FROM base AS build
+# NEXT_PUBLIC_* are baked into the bundle at Next build time.
+ARG NEXT_PUBLIC_API_URL
+ARG NEXT_PUBLIC_SITE_URL
+ARG NEXT_PUBLIC_TURNSTILE_SITE_KEY
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL \
+    NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL \
+    NEXT_PUBLIC_TURNSTILE_SITE_KEY=$NEXT_PUBLIC_TURNSTILE_SITE_KEY
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
 RUN pnpm --filter @prime-agentic/contracts build \
