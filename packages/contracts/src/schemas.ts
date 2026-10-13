@@ -18,9 +18,9 @@ export const demoRequestSchema = z.object({
   role: z.string().trim().max(200).optional(),
   platform: platformSlugSchema,
   message: z.string().trim().max(2000),
-  consent: z.literal(true, {
-    message: 'Consent is required',
-  }),
+  consent: z
+    .boolean()
+    .refine((value) => value === true, { message: 'Consent is required' }),
   /** Honeypot field: must be empty for a genuine submission. */
   honeypot: z.string().max(200).optional(),
 });
