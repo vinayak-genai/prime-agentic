@@ -1,0 +1,8 @@
+title = "gitleaks config"
+
+[extend]
+  useDefault = true
+
+[allowlist]
+  description = "NestJS scaffold CircleCI badge placeholder token (false positive)"
+  stopwords = ["abc123def456"]
