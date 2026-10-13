@@ -4,6 +4,7 @@ const TURNSTILE = 'https://challenges.cloudflare.com';
 const SENTRY_INGEST = 'https://*.ingest.sentry.io';
 
 const nextConfig: NextConfig = {
+  output: 'standalone',
   transpilePackages: ['@prime-agentic/ui'],
   allowedDevOrigins: ['127.0.0.1'],
   async headers() {
