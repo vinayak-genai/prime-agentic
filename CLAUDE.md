@@ -25,6 +25,9 @@ Unreleased features must be labeled "In Development" / "Early Access".
 - Mobile-first; breakpoints 360/768/1024/1440; dark/light themes
 - Tests: Vitest (unit), Playwright (e2e + a11y)
 - No secrets in repo; use .env.example
+- CI/CD & observability: every PR runs lint/typecheck/test/build, e2e,
+  Lighthouse, and security scans (see OBSERVABILITY_CICD.md); secrets are
+  injected via GitHub/Sentry only, never committed.
 - Conventional commits; small, reviewable changes
 
 ## Workflow rules
@@ -37,4 +40,4 @@ Unreleased features must be labeled "In Development" / "Early Access".
 ## Docs index
 
 PRD.md, SITEMAP_UIUX.md, ARCHITECTURE.md, MODULE_INDEX.md,
-TECH_WORKFLOW.md, CONTENT_PLAN.md
+TECH_WORKFLOW.md, CONTENT_PLAN.md, OBSERVABILITY_CICD.md
