@@ -1,6 +1,7 @@
 import type { NextConfig } from 'next';
 
 const TURNSTILE = 'https://challenges.cloudflare.com';
+const SENTRY_INGEST = 'https://*.ingest.sentry.io';
 
 const nextConfig: NextConfig = {
   transpilePackages: ['@prime-agentic/ui'],
@@ -11,6 +12,7 @@ const nextConfig: NextConfig = {
     const connectSrc = [
       "'self'",
       TURNSTILE,
+      SENTRY_INGEST,
       apiOrigin,
       'http://localhost:*',
       'ws://localhost:*',
@@ -42,4 +44,7 @@ const nextConfig: NextConfig = {
   },
 };
 
+// @sentry/nextjs v11 instruments via sentry.*.config.ts + instrumentation.ts;
+// source maps are uploaded automatically during `next build` when
+// SENTRY_AUTH_TOKEN, SENTRY_ORG, and SENTRY_PROJECT are set in the environment.
 export default nextConfig;
