@@ -26,6 +26,25 @@ describe('createDemoRequest', () => {
     });
   });
 
+  it('sends custom headers such as the Turnstile token', async () => {
+    const fetchMock = vi
+      .fn()
+      .mockResolvedValue(new Response(null, { status: 201 }));
+    vi.stubGlobal('fetch', fetchMock);
+
+    await createDemoRequest(validInput, {
+      headers: { 'x-turnstile-token': 'token123' },
+    });
+
+    const init = fetchMock.mock.calls[0]?.[1] as {
+      headers: Record<string, string>;
+    };
+    expect(init.headers).toEqual({
+      'content-type': 'application/json',
+      'x-turnstile-token': 'token123',
+    });
+  });
+
   it('returns a network error instead of throwing when fetch rejects', async () => {
     vi.stubGlobal(
       'fetch',

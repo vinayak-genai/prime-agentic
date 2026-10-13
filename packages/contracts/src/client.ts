@@ -4,6 +4,8 @@ import type { ApiError, DemoRequestInput } from './schemas.js';
 export interface RequestOptions {
   baseUrl?: string;
   signal?: AbortSignal;
+  /** Extra headers, e.g. the Turnstile token. */
+  headers?: Record<string, string>;
 }
 
 export type ApiResult<T> =
@@ -40,7 +42,7 @@ export async function createDemoRequest(
   try {
     res = await fetch(`${options.baseUrl ?? DEFAULT_BASE_URL}/demo-requests`, {
       method: 'POST',
-      headers: { 'content-type': 'application/json' },
+      headers: { 'content-type': 'application/json', ...options.headers },
       body: JSON.stringify(parsed.data),
       signal: options.signal,
     });
