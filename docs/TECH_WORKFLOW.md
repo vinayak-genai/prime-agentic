@@ -14,22 +14,30 @@ Two lead sources: **demo requests** and **contact** (`LeadForm`), plus
 
 ```
 User submits LeadForm (apps/web)
-        │  typed client, zod-validated
+        │  shared zod schema + typed client
         ▼
-POST /api/demo-requests (or /contact)  — apps/api
+POST /api/demo-requests  — apps/api
         │
-        ├─ 1. Rate limiter (per-IP + per-form)     → 429 on abuse
-        ├─ 2. DTO validation (class-validator)     → 400 on invalid
-        ├─ 3. Honeypot check (hidden field empty)  → silently drop bots
-        ├─ 4. Captcha verify (Turnstile/reCAPTCHA) → reject if fails
-        ├─ 5. Persist to Postgres (Prisma)
-        └─ 6. Email notification (Resend / SMTP)
+        ├─ 1. Content-Type guard (application/json)      → 415 otherwise
+        ├─ 2. Rate limit (per-IP + per-email)            → 429 on abuse
+        ├─ 3. Captcha verify (Turnstile; off in dev/test) → 401 on failure
+        ├─ 4. DTO validation (zod, shared schema)        → 400 with typed errors
+        ├─ 5. Honeypot check (filled)                    → fake 201, stores nothing
+        ├─ 6. Dedupe (same email+platform within 24h)    → idempotent 201
+        └─ 7. Persist to Postgres (Prisma; consent version + timestamp)
 ```
 
-- **Success:** 201 + confirmation; **error:** typed error mapped to a friendly
-  inline message.
-- Every demo request stores `platform` of interest so sales can prioritize.
-- Do-not-fabricate rule: no lead is created without a real submission.
+**Email (async):** a sweep job claims persisted leads atomically (via a
+`sending` state), sends the sales notification + requester confirmation, and
+retries with exponential backoff up to a cap before marking `failed`. An email
+failure never loses the lead.
+
+- **Success:** 201; **error:** a typed `{ error: { code, message, fields } }`
+  mapped to the form's inline error summary.
+- Every demo request stores `platform` of interest; leads record the consent
+  text version and timestamp, and carry a `deleteAt` retention timestamp.
+- No raw IPs are stored. Do-not-fabricate: no lead is created without a real
+  submission (a filled honeypot stores nothing).
 
 ### 1.2 Newsletter
 

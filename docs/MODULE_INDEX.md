@@ -23,15 +23,16 @@ Legend — Type: `ui` (packages/ui) · `web` (apps/web component) · `page`
 
 ## 2. App Components (`apps/web`)
 
-| Module           | Type | Props                                                              | Dependencies                            |
-| ---------------- | ---- | ------------------------------------------------------------------ | --------------------------------------- |
-| `Header`         | web  | `nav: NavItem[]`, `cta: {label, href}`                             | `Button`, mobile-menu state             |
-| `Footer`         | web  | `nav`, `social: SocialLink[]`, `newsletter`, `disclaimer?: string` | `NewsletterForm`                        |
-| `AgentFlow`      | web  | `agents: Agent[]`, `goal: string`, `animate: boolean`              | Framer Motion, `useReducedMotion`       |
-| `LeadForm`       | web  | `type: "contact" \| "demo"`, `platforms: Platform[]`               | api `createDemoRequest`, `zod` schema   |
-| `NewsletterForm` | web  | `—`                                                                | api `subscribeNewsletter`, `zod` schema |
-| `FAQ`            | web  | `items: {question, answer}[]`                                      | native `<details>/<summary>`            |
-| `CTABand`        | web  | `title`, `description`, `ctas`                                     | `Button`                                |
+| Module            | Type | Props                                                              | Dependencies                                                           |
+| ----------------- | ---- | ------------------------------------------------------------------ | ---------------------------------------------------------------------- |
+| `Header`          | web  | `nav: NavItem[]`, `cta: {label, href}`                             | `Button`, mobile-menu state                                            |
+| `Footer`          | web  | `nav`, `social: SocialLink[]`, `newsletter`, `disclaimer?: string` | `NewsletterForm`                                                       |
+| `AgentFlow`       | web  | `agents: Agent[]`, `goal: string`, `animate: boolean`              | Framer Motion, `useReducedMotion`                                      |
+| `LeadForm`        | web  | `defaultPlatform?: string`                                         | contracts `createDemoRequest` + `demoRequestSchema`, `TurnstileWidget` |
+| `TurnstileWidget` | web  | `siteKey?: string`, `onToken: (token) => void`                     | Cloudflare Turnstile script (lazy)                                     |
+| `NewsletterForm`  | web  | `—`                                                                | api `subscribeNewsletter` (6b)                                         |
+| `FAQ`             | web  | `items: {question, answer}[]`                                      | native `<details>/<summary>`                                           |
+| `CTABand`         | web  | `title`, `description`, `ctas`                                     | `Button`                                                               |
 
 ## 3. Pages (`apps/web`)
 
