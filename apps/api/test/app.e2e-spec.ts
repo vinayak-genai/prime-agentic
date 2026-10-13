@@ -17,16 +17,18 @@ describe('AppController (e2e)', () => {
         $connect: async () => undefined,
         $disconnect: async () => undefined,
         $queryRaw: async () => [],
+        demoRequest: { findFirst: async () => null, create: async () => ({}) },
       })
       .compile();
 
     app = moduleFixture.createNestApplication();
+    app.setGlobalPrefix('api', { exclude: ['health'] });
     await app.init();
   });
 
-  it('/ (GET)', () => {
+  it('/api (GET)', () => {
     return request(app.getHttpServer())
-      .get('/')
+      .get('/api')
       .expect(200)
       .expect('Hello World!');
   });
