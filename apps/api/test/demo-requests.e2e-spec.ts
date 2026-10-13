@@ -29,6 +29,9 @@ describe('DemoRequests (e2e)', () => {
         demoRequest: {
           findFirst: async () => null,
           create: async () => ({ id: 'x' }),
+          updateMany: async () => ({ count: 0 }),
+          findMany: async () => [],
+          update: async () => ({}),
         },
       })
       .compile();
@@ -68,5 +71,13 @@ describe('DemoRequests (e2e)', () => {
       .set('content-type', 'application/json')
       .send({ ...validBody, honeypot: 'bot@example.com' })
       .expect(201);
+  });
+
+  it('returns 415 for a non-JSON content type', async () => {
+    await request(app.getHttpServer())
+      .post('/api/demo-requests')
+      .set('content-type', 'text/plain')
+      .send('name=Ada')
+      .expect(415);
   });
 });
