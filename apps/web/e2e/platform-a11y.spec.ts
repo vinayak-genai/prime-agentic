@@ -42,10 +42,12 @@ test('financial planner page has no axe violations with all FAQ open', async ({
   await assertNoViolations(page, 'all FAQ open');
 });
 
-test('coming soon page has no axe violations', async ({ page }) => {
-  await page.goto('/platforms/recruitment-ats');
-  await assertNoViolations(page, 'coming soon');
-});
+for (const slug of ['recruitment-ats', 'edtech-ai', 'iot']) {
+  test(`${slug} page has no axe violations (light)`, async ({ page }) => {
+    await page.goto(`/platforms/${slug}`);
+    await assertNoViolations(page, slug);
+  });
+}
 
 test('404 page has no axe violations', async ({ page }) => {
   await page.goto('/platforms/does-not-exist');

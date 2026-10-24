@@ -1,0 +1,25 @@
+{
+  "slug": "edtech-ai",
+  "persona": {
+    "name": "Priya Nair",
+    "detail": "Illustrative persona, adult learner in a skills course"
+  },
+  "steps": [
+    {
+      "title": "Initial assessment",
+      "description": "Agents assess Priya's starting level and goals. All progress data is mock."
+    },
+    {
+      "title": "Adaptive path",
+      "description": "Agents recommend content and pacing tailored to Priya."
+    },
+    {
+      "title": "Progress check",
+      "description": "Agents surface the concepts Priya is struggling with and adjust the path."
+    },
+    {
+      "title": "Instructor view",
+      "description": "The instructor sees a summary of progress and gaps across the cohort."
+    }
+  ]
+}

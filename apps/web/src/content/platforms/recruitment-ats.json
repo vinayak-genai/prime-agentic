@@ -1,0 +1,79 @@
+{
+  "slug": "recruitment-ats",
+  "hero": {
+    "outcome": "Hire faster with AI that screens, schedules, and scores.",
+    "description": "Coordinated agents that screen, schedule, and score candidates so recruiters focus on the best-fit conversations."
+  },
+  "problem": {
+    "title": "Hours lost to screening and scheduling",
+    "description": "Recruiters spend much of their day reading resumes and coordinating interviews. High-volume pipelines are slow, and strong candidates can slip through before a person ever sees them."
+  },
+  "outcome": {
+    "title": "Recruiters back on the conversation",
+    "description": "Prime Agentic screens and ranks applicants, coordinates interview times, and surfaces a shortlist so recruiters spend their time on the conversations that decide the hire."
+  },
+  "features": [
+    {
+      "title": "Resume screening",
+      "description": "Agents review and rank applicants against the role requirements."
+    },
+    {
+      "title": "Interview scheduling",
+      "description": "Agents coordinate times across candidates and interviewers."
+    },
+    {
+      "title": "Candidate scoring",
+      "description": "Agents score applicants on role fit and surface an explainable shortlist."
+    },
+    {
+      "title": "Pipeline visibility",
+      "description": "A shared view of every stage, from application to offer."
+    }
+  ],
+  "steps": [
+    {
+      "title": "Plan",
+      "description": "Agents turn the role description into screening and scoring criteria."
+    },
+    {
+      "title": "Execute",
+      "description": "Agents screen applicants, schedule interviews, and rank candidates."
+    },
+    {
+      "title": "Adapt",
+      "description": "As interviewers give feedback, agents refine the shortlist and next steps."
+    }
+  ],
+  "useCases": [
+    {
+      "title": "Staffing agencies",
+      "description": "Work more requisitions at once with faster screening and scheduling."
+    },
+    {
+      "title": "In-house talent teams",
+      "description": "Keep a consistent, explainable pipeline across every open role."
+    },
+    {
+      "title": "High-volume hiring",
+      "description": "Screen large applicant pools and surface the candidates worth a conversation."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "When will this be available?",
+      "answer": "[PLACEHOLDER] The platform is in development; availability timing will be announced."
+    },
+    {
+      "question": "Is there an early access program?",
+      "answer": "[PLACEHOLDER] Early access details are still being defined."
+    },
+    {
+      "question": "What does this demo show?",
+      "answer": "The demo is an illustrative walkthrough of the coordination approach, using a fictional role and mock candidates."
+    },
+    {
+      "question": "Does the AI make hiring decisions?",
+      "answer": "No. Agents screen, schedule, and rank to support the process; a human recruiter makes the final decision."
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "slug": "edtech-ai",
+  "hero": {
+    "outcome": "Adaptive learning that meets every learner where they are.",
+    "description": "Adaptive learning agents that tailor pacing and content to each learner across institutions."
+  },
+  "problem": {
+    "title": "One pace doesn't fit all",
+    "description": "A fixed curriculum moves at one speed. Learners who need more time fall behind, and learners who are ahead lose momentum. Instructors can't easily personalize at scale."
+  },
+  "outcome": {
+    "title": "Every learner on their own path",
+    "description": "Prime Agentic assesses each learner's level and adapts pacing and content, while giving instructors a clear view of progress and the gaps that need attention."
+  },
+  "features": [
+    {
+      "title": "Adaptive pacing",
+      "description": "Agents adjust the pace of a course to each learner's progress."
+    },
+    {
+      "title": "Content recommendations",
+      "description": "Agents suggest the next material that fits where a learner is."
+    },
+    {
+      "title": "Progress and gap detection",
+      "description": "Agents surface the specific concepts a learner is struggling with."
+    },
+    {
+      "title": "Instructor dashboards",
+      "description": "A cohort-level view of progress, gaps, and intervention points."
+    }
+  ],
+  "steps": [
+    {
+      "title": "Plan",
+      "description": "Agents assess a learner's starting level and goals."
+    },
+    {
+      "title": "Execute",
+      "description": "Agents recommend content and pacing tailored to that learner."
+    },
+    {
+      "title": "Adapt",
+      "description": "As the learner progresses, agents adjust the path and flag gaps."
+    }
+  ],
+  "useCases": [
+    {
+      "title": "Schools",
+      "description": "Personalize pacing across classrooms without extra instructor time."
+    },
+    {
+      "title": "Universities",
+      "description": "Adapt large-enrollment courses to individual preparation levels."
+    },
+    {
+      "title": "Training providers",
+      "description": "Tailor skills programs to each learner's starting point and pace."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "When will this be available?",
+      "answer": "[PLACEHOLDER] The platform is in development; availability timing will be announced."
+    },
+    {
+      "question": "Is there an early access program?",
+      "answer": "[PLACEHOLDER] Early access details are still being defined."
+    },
+    {
+      "question": "What does this demo show?",
+      "answer": "The demo is an illustrative walkthrough of the coordination approach, using a fictional learner and mock progress data."
+    },
+    {
+      "question": "Does this replace instructors?",
+      "answer": "No. Agents adapt pacing and surface gaps; instructors stay central to teaching and support."
+    }
+  ]
+}

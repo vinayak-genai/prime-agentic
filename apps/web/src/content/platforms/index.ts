@@ -10,6 +10,9 @@ import { platformContentSchema, type PlatformContent } from './schema';
  */
 export const PLATFORM_CONTENT_LOADERS = [
   ['financial-planner', () => import('./financial-planner.json')],
+  ['recruitment-ats', () => import('./recruitment-ats.json')],
+  ['edtech-ai', () => import('./edtech-ai.json')],
+  ['iot', () => import('./iot.json')],
 ] as const;
 
 export const getPlatformContent = cache(

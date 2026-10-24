@@ -1,0 +1,25 @@
+{
+  "slug": "recruitment-ats",
+  "persona": {
+    "name": "Jordan Lee",
+    "detail": "Illustrative persona, recruiter at a scaling team"
+  },
+  "steps": [
+    {
+      "title": "Open a role",
+      "description": "Jordan defines the role requirements. All applicants are mock data."
+    },
+    {
+      "title": "Screen applicants",
+      "description": "Agents review and rank applicants against the requirements. Illustrative candidates only."
+    },
+    {
+      "title": "Schedule interviews",
+      "description": "Agents coordinate times across candidates and interviewers."
+    },
+    {
+      "title": "Shortlist review",
+      "description": "A ranked shortlist surfaces the candidates worth a conversation."
+    }
+  ]
+}

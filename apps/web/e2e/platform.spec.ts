@@ -149,19 +149,29 @@ test('unknown slug returns 404', async ({ page }) => {
   expect(response?.status()).toBe(404);
 });
 
-test('platform without content falls back to coming soon', async ({ page }) => {
-  await page.goto('/platforms/recruitment-ats');
-  await expect(
-    page.getByRole('heading', { name: 'Recruitment ATS' }),
-  ).toBeVisible();
-});
+for (const [slug, outcome] of [
+  [
+    'recruitment-ats',
+    'Hire faster with AI that screens, schedules, and scores.',
+  ],
+  ['edtech-ai', 'Adaptive learning that meets every learner where they are.'],
+  ['iot', 'Turn device data into autonomous operations.'],
+] as const) {
+  test(`${slug} page renders full content`, async ({ page }) => {
+    await page.goto(`/platforms/${slug}`);
+    await expect(page.getByRole('heading', { level: 1 })).toContainText(
+      outcome,
+    );
+  });
+}
 
-test('coming soon page is noindex', async ({ page }) => {
-  await page.goto('/platforms/recruitment-ats');
-  await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
-    'content',
-    /noindex/,
-  );
+test('content pages are indexable (no noindex)', async ({ page }) => {
+  for (const slug of ['recruitment-ats', 'edtech-ai', 'iot']) {
+    await page.goto(`/platforms/${slug}`);
+    await expect(
+      page.locator('meta[name="robots"][content*="noindex"]'),
+    ).toHaveCount(0);
+  }
 });
 
 test('main landmark and footer render across page states', async ({ page }) => {

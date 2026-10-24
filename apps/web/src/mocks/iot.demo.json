@@ -1,0 +1,25 @@
+{
+  "slug": "iot",
+  "persona": {
+    "name": "Sam Rivera",
+    "detail": "Illustrative persona, operations lead for a device fleet"
+  },
+  "steps": [
+    {
+      "title": "Connect devices",
+      "description": "Sam's fleet sends mock telemetry to the platform."
+    },
+    {
+      "title": "Monitor fleet",
+      "description": "Agents flag readings that deviate from expected behavior."
+    },
+    {
+      "title": "Supervised action",
+      "description": "Agents propose a next step; Sam approves it before it runs."
+    },
+    {
+      "title": "Operations summary",
+      "description": "A summary shows the actions taken and the outcomes across the fleet."
+    }
+  ]
+}

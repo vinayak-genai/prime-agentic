@@ -1,0 +1,79 @@
+{
+  "slug": "iot",
+  "hero": {
+    "outcome": "Turn device data into autonomous operations.",
+    "description": "Agents that turn device telemetry into autonomous, supervised operations for industrial fleets."
+  },
+  "problem": {
+    "title": "Reacting after the fact",
+    "description": "Device fleets generate constant telemetry, but operators can't watch everything. Issues are often found only after a failure, and manual triage doesn't scale with fleet size."
+  },
+  "outcome": {
+    "title": "Operate by exception",
+    "description": "Prime Agentic turns telemetry into supervised actions, flagging anomalies and proposing next steps so operators act before small issues become failures."
+  },
+  "features": [
+    {
+      "title": "Telemetry ingestion",
+      "description": "Agents collect and normalize signals from a fleet of devices."
+    },
+    {
+      "title": "Anomaly detection",
+      "description": "Agents flag readings that deviate from expected behavior."
+    },
+    {
+      "title": "Supervised actions",
+      "description": "Agents propose next steps that an operator approves before they run."
+    },
+    {
+      "title": "Fleet dashboards",
+      "description": "A single view of device health and open actions across the fleet."
+    }
+  ],
+  "steps": [
+    {
+      "title": "Plan",
+      "description": "Agents map the fleet and the operational rules for each device type."
+    },
+    {
+      "title": "Execute",
+      "description": "Agents monitor telemetry and propose actions when something is off."
+    },
+    {
+      "title": "Adapt",
+      "description": "As operators approve or override, agents learn and refine their proposals."
+    }
+  ],
+  "useCases": [
+    {
+      "title": "Industrial fleets",
+      "description": "Monitor machines at scale and catch issues before they stop production."
+    },
+    {
+      "title": "Building management",
+      "description": "Turn sensor data into coordinated maintenance and efficiency actions."
+    },
+    {
+      "title": "Utilities and energy",
+      "description": "Supervise distributed assets and prioritize the exceptions that matter."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "When will this be available?",
+      "answer": "[PLACEHOLDER] The platform is in development; availability timing will be announced."
+    },
+    {
+      "question": "Is there an early access program?",
+      "answer": "[PLACEHOLDER] Early access details are still being defined."
+    },
+    {
+      "question": "What does this demo show?",
+      "answer": "The demo is an illustrative walkthrough of the coordination approach, using a fictional fleet and mock telemetry."
+    },
+    {
+      "question": "Does it act fully autonomously?",
+      "answer": "No. Agents propose actions, but consequential actions are approved by a human operator before they run."
+    }
+  ]
+}

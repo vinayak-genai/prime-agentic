@@ -61,6 +61,10 @@ Legend — Type: `ui` (packages/ui) · `web` (apps/web component) · `page`
 | `mocks/<slug>.demo.json`        | `PlatformDemo` — `{slug, persona, steps[]}` (illustrative mock)                                           |
 | `content/home.ts`               | Home copy — hero slides, sections, illustrative scenarios                                                 |
 
+All four registered platforms (`financial-planner`, `recruitment-ats`,
+`edtech-ai`, `iot`) ship both a `<slug>.json` content file and a
+`<slug>.demo.json` mock.
+
 ---
 
 ## 5. Dependency Notes
@@ -72,5 +76,6 @@ Legend — Type: `ui` (packages/ui) · `web` (apps/web component) · `page`
 - All mock-driven components (`DemoViewer`, `PlatformPage`) take data as props —
   never fetch real platform data.
 - Content and demo JSON are loaded **per slug** via lazy loaders so each
-  platform route bundles only its own JSON; a registry slug with no content
-  loader renders the "coming soon" page.
+  platform route bundles only its own JSON. All four registered slugs currently
+  have loaders; the "coming soon" page remains as the fallback for any future
+  registry slug added without content.

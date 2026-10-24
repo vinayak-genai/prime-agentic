@@ -7,6 +7,9 @@ import { demoSchema, type PlatformDemo } from './schema';
  */
 export const PLATFORM_DEMO_LOADERS = [
   ['financial-planner', () => import('./financial-planner.demo.json')],
+  ['recruitment-ats', () => import('./recruitment-ats.demo.json')],
+  ['edtech-ai', () => import('./edtech-ai.demo.json')],
+  ['iot', () => import('./iot.demo.json')],
 ] as const;
 
 export const getPlatformDemo = cache(
